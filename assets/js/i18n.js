@@ -49,7 +49,8 @@ const translations = {
       }
     },
     skills: {
-      title: "Tecnologías"
+      title: "Tecnologías",
+      tools: "Herramientas y Ecosistemas"
     },
     certs: {
       title: "Certificaciones",
