@@ -1,7 +1,10 @@
 
 document.addEventListener('DOMContentLoaded', () => {
+
   const typingElement = document.querySelector('.typing');
   const cursorElement = document.querySelector('.typing__cursor');
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
   
 
   if (!typingElement || !cursorElement) return;
@@ -18,6 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   function type() {
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('nav__menu--open');        
+        const isExpanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', !isExpanded);
+      });
+      
+      document.querySelectorAll('.nav__menu a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('nav__menu--open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
 
     if (typeof translations === 'undefined' || typeof currentLang === 'undefined') return;
 

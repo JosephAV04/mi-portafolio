@@ -1959,3 +1959,52 @@ p[data-i18n$=".desc"],
 [data-theme="light"] .brand-text {
   color: #0f172a; /* Texto oscuro para que se lea sobre blanco */
 }
+
+@media (max-width: 768px) {
+  /* 1. Arreglo de la tarjeta de proyectos (Badge superpuesto) */
+  .card--featured {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinea todo a la izquierda */
+  }
+
+  .badge {
+    position: static; /* Deja de flotar en la esquina */
+    margin-bottom: 12px; /* Empuja el título hacia abajo */
+    align-self: flex-start;
+    transform: none; /* Quita ajustes de posición si los tenía */
+  }
+  
+  /* Asegura que el título no tenga márgenes raros arriba */
+  .card h3 {
+    margin-top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: 70px; /* Altura de tu header */
+    left: 0;
+    width: 100%;
+    background: var(--background); /* Usa el color de fondo del tema */
+    border-bottom: 1px solid var(--border);
+    padding: 20px;
+    
+    /* Oculto por defecto */
+    transform: translateY(-150%);
+    transition: transform 0.3s ease;
+    z-index: 100;
+    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  /* Clase que agrega JS para mostrarlo */
+  .nav__menu--open {
+    transform: translateY(0);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+}
