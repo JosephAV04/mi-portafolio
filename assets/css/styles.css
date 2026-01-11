@@ -1,0 +1,1961 @@
+:root {
+  --bg: #0A0A0B;
+  --surface: #161B22;
+  --accent: #008080;   
+  --text: #EDF2F4;
+  --muted: #8D99AE;
+
+  --bg-soft: rgba(255, 255, 255, 0.03);
+  --border: rgba(255, 255, 255, 0.08);
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-soft: 0 10px 20px rgba(0, 0, 0, 0.22);
+
+  --radius: 18px;
+  --radius-sm: 12px;
+
+  --container: 1100px;
+  --nav-h: 72px;
+
+  --transition: 220ms cubic-bezier(.2,.8,.2,1);
+  --font: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+
+  /* Typography */
+  --fs-body: 16px;
+  --lh-body: 1.65;
+  --lh-prose: 1.75;
+  --measure: 72ch;
+  --para-gap: 14px;
+  --content-gap: 12px;
+}
+
+html[data-theme="light"] {
+  --bg: #F0F2F5;
+  --surface: #FFFFFF;
+  
+  --accent: #33544E;
+  
+  --text: #2B2D42;
+  --muted: #5C677D;
+
+  --bg-soft: #F1F3F5;
+  --border: rgba(0, 0, 0, 0.06);
+
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Fondo fijo */
+html {
+  background: var(--bg);
+  transition: background var(--transition);
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+
+html::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+
+    radial-gradient(1200px 700px at 20% 0%, rgba(100, 255, 218, 0.15), transparent 58%),
+    radial-gradient(1000px 620px at 80% 5%, rgba(100, 255, 218, 0.10), transparent 62%),
+    radial-gradient(900px 700px at 50% 40%, rgba(100, 255, 218, 0.05), transparent 70%);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  background: transparent;
+  color: var(--text);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  transition: color var(--transition);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 14px; 
+  text-decoration: none;
+  height: 100%; 
+}
+
+/* El Logo (Isotipo) */
+.brand-icon {
+  height: 52px; 
+  width: auto;
+  object-fit: contain;
+  
+
+  mix-blend-mode: screen; 
+  
+  
+  filter: drop-shadow(0 0 5px rgba(18, 160, 144, 0.4)); 
+}
+
+
+.brand-text {
+  font-weight: 800;
+  font-size: 1.1rem; 
+  color: var(--text); 
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+}
+
+.brand-text .text-highlight {
+  color: var(--accent); /* Tu nuevo color Teal */
+}
+.skip-link {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  padding: 10px 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  transform: translateY(-140%);
+  transition: transform var(--transition);
+  z-index: 9999;
+}
+.skip-link:focus { transform: translateY(0%); }
+
+:focus-visible {
+  outline: 3px solid rgba(20, 167, 150, 0.65);
+  outline-offset: 3px;
+  border-radius: 10px;
+}
+
+.container {
+  width: min(var(--container), calc(100% - 40px));
+  margin: 0 auto;
+}
+.muted { color: var(--muted); }
+
+/* ------------------------------
+   PROSE / LONG TEXT (Editorial)
+   Applies ONLY to paragraphs (not titles)
+------------------------------ */
+
+/* --- NUEVOS ESTILOS PARA LA BARRA DE "SOBRE MÍ" --- */
+
+.about-highlights {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--border); /* Línea sutil separadora */
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  font-family: var(--font);
+  font-weight: 600;
+  color: var(--text);
+  font-size: 1.05rem;
+}
+
+.highlight-icon {
+  color: #14b8a6; /* TU COLOR TEAL */
+  margin-right: 12px;
+}
+
+.highlight-date {
+  color: var(--muted); /* Fecha en gris suave */
+  font-weight: 400;
+}
+
+.divider {
+  margin: 0 8px;
+  color: var(--border); /* Un punto separador sutil */
+}
+
+/* Ajuste para los párrafos dentro de la nueva estructura */
+/* Esto reemplaza tus estilos inline "margin: 0 0 12px" */
+.about-text-content p {
+  margin-bottom: 16px; 
+}
+
+.about-text-content p:last-child {
+  margin-bottom: 0;
+}
+
+
+/* --- TUS REGLAS ANTERIORES (Ligeramente ajustadas para el nuevo DIV) --- */
+
+/* Actualicé los selectores para que funcionen con el nuevo DIV en lugar de P anidados */
+.lead,
+.about-text-content,       
+.about-text-content p,      
+p[data-i18n$=".desc"],
+#projects p[data-i18n$=".desc"],
+#experience .card__text {
+  max-width: var(--measure);
+  line-height: var(--lh-prose);
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  text-wrap: balance;
+  text-align: left;
+}
+
+/* Tu regla para negritas en Teal */
+.lead strong {
+  color: #14b8a6;   
+  font-weight: 612; 
+}
+
+/* Mobile adjustments */
+@media (max-width: 760px) {
+  .about-highlights {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+}
+
+/* On tablet/mobile hero is centered; center the block, keep text readable */
+@media (max-width: 980px) {
+  .lead { margin-left: auto; margin-right: auto; }
+}
+
+/* ------------------------------
+   Navbar
+------------------------------ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  backdrop-filter: blur(14px);
+  background: color-mix(in srgb, var(--bg) 72%, transparent);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.brand__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 6px rgba(20, 184, 166, 0.15);
+}
+.brand__text {
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.brand__accent { color: var(--accent); }
+
+.nav__menu {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav__menu a {
+  font-weight: 600;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--text) 88%, var(--muted));
+  padding: 10px 10px;
+  border-radius: 12px;
+  transition: background var(--transition), transform var(--transition), border-color var(--transition);
+  border: 1px solid transparent;
+}
+.nav__menu a:hover {
+  background: var(--bg-soft);
+  transform: translateY(-1px);
+  border-color: rgba(20, 184, 166, 0.35);
+}
+
+.nav__toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  /* Corrección: Alinear elementos verticalmente */
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+}
+.nav__toggle span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 999px;
+  opacity: 0.9;
+}
+
+.icon-btn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 14px;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition), background var(--transition);
+  box-shadow: var(--shadow-soft);
+}
+.icon-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(20, 184, 166, 0.45);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 44px;
+  padding: 0 16px;
+  border-radius: 14px;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  transition: transform var(--transition), box-shadow var(--transition), background var(--transition), border-color var(--transition);
+  cursor: pointer;
+  user-select: none;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: white;
+  box-shadow: 0 14px 30px rgba(20, 184, 166, 0.24);
+}
+.btn--primary:hover { transform: translateY(-2px); }
+
+.btn--soft {
+  background: var(--bg-soft);
+  border-color: var(--border);
+  box-shadow: var(--shadow-soft);
+  color: var(--text);
+}
+.btn--soft:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 184, 166, 0.45);
+}
+
+/* Hero */
+.hero { padding: 60px 0 20px; }
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  align-items: center;
+  grid-template-areas: "left right";
+}
+.hero__left { grid-area: left; }
+.hero__right { grid-area: right; display: flex; justify-content: center; }
+
+.title {
+  margin: 0;
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  line-height: 1.05;
+}
+.title__accent { color: var(--accent); }
+
+/* ✅ Subtítulo más grande + mejor jerarquía (sin cambiar layout) */
+.subtitle {
+  margin: 10px 0 26px; /* ✅ más espacio abajo (antes 18px) */
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: clamp(18px, 1.8vw, 24px);
+  line-height: 1.15;
+  letter-spacing: clamp(1.6px, 0.35vw, 3px);
+  color: color-mix(in srgb, var(--text) 90%, var(--muted));
+  text-wrap: balance;
+
+  /* ✅ Mantener altura aunque el typing esté vacío */
+  min-height: calc(1.15em * 1); /* 1 línea reservada */
+
+  /* ✅ NO usar flex aquí (para que en desktop quede pegado a la izquierda) */
+  display: block;
+}
+
+
+.subtitle .typing {
+  display: inline-block;
+  min-width: 12ch;
+}
+
+
+
+/* Mobile: reduce tracking para que se vea elegante y no “espaciado raro” */
+@media (max-width: 760px) {
+  .subtitle {
+    letter-spacing: 1.4px;
+    font-size: clamp(17px, 4.4vw, 20px);
+
+    /* ✅ Mantener altura en móvil también */
+    min-height: calc(1.15em * 1);
+
+    /* ✅ Centrar solo en mobile (tu hero está centrado ahí) */
+    text-align: center;
+  }
+}
+
+
+
+.hero__cta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 18px 0 14px;
+}
+
+.avatar {
+  width: min(340px, 78vw);
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  position: relative;
+  padding: 6px;
+  /* Ajuste 1: Fondo sutil con base Teal muy baja opacidad para dar volumen */
+  background: radial-gradient(circle at 30% 20%, rgba(20, 184, 166, 0.10), transparent 60%);
+  box-shadow: var(--shadow);
+}
+
+.avatar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  /* Ajuste 2: Color sólido Teal vibrante para el borde principal */
+  border: 2px solid #14b8a6;
+  /* Ajuste 3: "Halo" exterior usando el mismo Teal con 15% de opacidad */
+  box-shadow: 0 0 0 8px rgba(20, 184, 166, 0.15);
+  pointer-events: none;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 999px;
+  object-fit: cover;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+/* Social icons grandes */
+.social {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center; /* ✅ para alinear con el nuevo botón */
+}
+.social__icon {
+  width: 52px; /* Más grandes */
+  height: 52px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition), background var(--transition), border-color var(--transition);
+}
+.social__icon svg {
+  width: 28px;
+  height: 28px;
+  fill: var(--text);
+}
+.social__icon:hover {
+  transform: translateY(-2px);
+  background: var(--bg-soft);
+  border-color: rgba(20, 184, 166, 0.45);
+}
+
+/* ✅ CTA “Contáctame” — Base neutra, se pone rojo en hover */
+.social__btn {
+  height: 52px;
+  padding: 0 18px;
+  border-radius: 16px;
+
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 900;
+  font-size: clamp(14px, 1.8vw, 18px);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+
+  cursor: pointer;
+  user-select: none;
+
+  box-shadow: var(--shadow-soft);
+
+  transition:
+    transform var(--transition),
+    background var(--transition),
+    color var(--transition),
+    box-shadow var(--transition),
+    border-color var(--transition);
+}
+
+.social__btn:hover {
+  transform: translateY(-2px);
+  background: var(--accent);
+  color: #fff;
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: 0 18px 44px color-mix(in srgb, var(--accent) 22%, transparent);
+}
+
+.social__btn:active {
+  transform: translateY(0px) scale(0.99);
+}
+
+.social__btn:focus-visible {
+  border-color: color-mix(in srgb, var(--accent) 70%, var(--border));
+  box-shadow:
+    0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent),
+    var(--shadow-soft);
+}
+
+
+/* Sections */
+.section { padding: 40px 0; }
+
+/* ✅ Offset para anchors con navbar sticky (funciona con scroll-behavior: smooth) */
+.section {
+  scroll-margin-top: calc(var(--nav-h) + 14px);
+}
+
+
+.section__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 22px; /* slightly more breathing room */
+}
+
+.section h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  position: relative;
+  padding-bottom: 10px;
+}
+.section h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 54px;
+  height: 3px;
+  border-radius: 99px;
+  background: var(--accent);
+}
+
+/* Cards */
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-soft);
+  padding: 22px;
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow);
+  border-color: rgba(20, 184, 166, 0.45);
+}
+.card h3 {
+  margin: 0 0 8px;
+  font-weight: 900;
+  letter-spacing: 0.5px;
+  line-height: 1.15;
+}
+
+/* ✅ Highlight elegante del formulario al llegar */
+.contact-card.contact-highlight {
+  animation: contactHighlight 900ms cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes contactHighlight {
+  0% {
+    border-color: var(--border);
+    box-shadow: var(--shadow-soft);
+  }
+  35% {
+    border-color: color-mix(in srgb, var(--accent) 70%, var(--border));
+    box-shadow:
+      0 0 0 6px color-mix(in srgb, var(--accent) 16%, transparent),
+      0 18px 44px color-mix(in srgb, var(--accent) 14%, transparent);
+  }
+  100% {
+    border-color: var(--border);
+    box-shadow: var(--shadow-soft);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-card.contact-highlight {
+    animation: none;
+    border-color: color-mix(in srgb, var(--accent) 70%, var(--border));
+    box-shadow:
+      0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent),
+      var(--shadow-soft);
+  }
+}
+
+/* Cleaner rhythm for meta lines inside cards */
+.card .muted {
+  margin: 0;
+}
+.card h3 + .muted {
+  margin-top: 6px;
+}
+
+/* Default card text block (experience) */
+.card__text {
+  margin-top: 12px;
+  font-size: 0.98em;
+}
+
+.card__actions {
+  margin-top: 16px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.card--featured {
+  border-color: rgba(20, 184, 166, 0.35);
+  box-shadow: 0 18px 44px rgbargba(20, 184, 166, 0.14);
+  position: relative;
+}
+.badge {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: inline-flex;
+  align-items: center;
+  height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.14);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  color: var(--accent);
+  font-weight: 900;
+  letter-spacing: 2px;
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.grid { display: grid; gap: 16px; }
+.grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Link Card (See more) */
+.card--link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+  font-weight: 800;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 16px;
+  cursor: pointer;
+}
+.card--link:hover {
+  background: var(--bg-soft);
+}
+
+/* ------------------------------
+   Projects — Tech chips (mini skills)
+------------------------------ */
+.project-tech{
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.card h3 + .project-tech{
+  margin-top: 6px; /* keep same rhythm as h3 + .muted */
+}
+
+/* Spacing between chips row and description */
+#projects .project-tech + p[data-i18n$=".desc"]{
+  margin-top: var(--content-gap);
+}
+
+.tech-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 6px 12px; /* Ajusté ligeramente para mejor proporción */
+  border-radius: 99px; /* 99px asegura bordes redondos perfectos tipo "píldora" */
+
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03); /* Fondo sutil estilo 'glass' */
+
+  font-weight: 600; /* 800 es muy grueso para texto pequeño, 600 se lee mejor */
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  color: var(--text); 
+
+  transition: all 0.2s ease;
+  user-select: none;
+  cursor: default; /* O 'pointer' si son clickeables */
+  text-decoration: none; /* Por si usas <a> */
+}
+
+.tech-chip:hover {
+  border-color: #14b8a6; /* Tu color Teal */
+  background: rgba(20, 184, 166, 0.1); /* Fondo Teal suave */
+  color: #14b8a6; /* Texto Teal */
+  transform: translateY(-2px); /* Pequeña elevación */
+}
+
+.tech-chip:focus-visible{
+  border-color: color-mix(in srgb, var(--accent) 70%, var(--border));
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.tech-chip img {
+  width: 18px;  /* Asegura que los iconos no se vean gigantes */
+  height: 18px;
+  object-fit: contain;
+}
+
+/* If we render without icon */
+.tech-chip.is-text-only {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* Keep GitHub icon visible on dark theme (same as .skill) */
+[data-theme="dark"] .tech-chip img[alt="GitHub"]{
+  filter: invert(1);
+}
+
+/* Skills grid */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+.skill {
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  border-radius: 16px;
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: transform var(--transition), border-color var(--transition);
+}
+.skill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(20, 184, 166, 0.45);
+}
+.skill img {
+  width: 26px;
+  height: 26px;
+  flex: 0 0 26px;
+}
+/* Invertir GitHub icon en modo oscuro para que se vea blanco */
+[data-theme="dark"] .skill img[alt="GitHub"] {
+  filter: invert(1);
+}
+
+.skill span {
+  font-weight: 800;
+  font-size: 14px;
+  color: color-mix(in srgb, var(--text) 88%, var(--muted));
+}
+
+/* Cert preview */
+.cert { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+.cert__img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+}
+.cert__body { padding: 16px 18px; flex: 1; }
+
+/* Idiomas */
+.lang-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+}
+.lang-name { font-size: 1.2rem; margin-bottom: 4px; color: var(--accent); }
+.lang-level { font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+
+/* Form */
+.form { margin: 0; }
+.hidden { display: none; }
+.field { display: grid; gap: 8px; margin-bottom: 12px; }
+.field span { font-weight: 800; letter-spacing: 0.5px; color: color-mix(in srgb, var(--text) 86%, var(--muted)); }
+.field input, .field textarea {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  padding: 12px 12px;
+  font-family: var(--font);
+  outline: none;
+  transition: border-color var(--transition), box-shadow var(--transition);
+
+  /* Evita que el usuario rompa el layout (no se sale de la card) */
+  resize: vertical;
+  max-width: 100%;
+}
+
+.field input:focus, .field textarea:focus {
+  border-color: rgba(20, 184, 166, 0.55);
+  box-shadow: 0 0 0 4px rgba(217, 4, 41, 0.12);
+}
+.form__success { margin-top: 10px; font-weight: 700; color: #2ecc71; }
+
+/* Footer */
+.footer {
+  padding: 30px 0 40px;
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 980px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+    grid-template-areas: "right" "left";
+    text-align: center;
+  }
+  .hero__cta, .social { justify-content: center; }
+  .grid--3 { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+/* ==============================
+   NAV — Switch to hamburger earlier (tablet)
+============================== */
+@media (max-width: 1100px) {
+  .nav__toggle { display: flex; }
+
+  .nav__menu {
+    position: absolute;
+    top: calc(var(--nav-h) + 10px);
+    right: 20px;
+    left: 20px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+    z-index: 60;
+  }
+
+  .nav__menu a,
+  .nav__menu button { width: 100%; justify-content: center; }
+
+  .nav__menu.is-open { display: flex; }
+}
+
+@media (max-width: 760px) {
+  .grid--2 { grid-template-columns: 1fr; }
+  .title { font-size: 38px; }
+  .skills-grid { grid-template-columns: 1fr; }
+}
+
+/* Resalta las fechas dentro de la sección de experiencia */
+#experience .muted {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.3px;
+}
+
+#experience .card__text {
+  line-height: var(--lh-prose);
+}
+
+#education .muted[data-i18n$=".date"] {
+  color: var(--accent);
+}
+
+/* 1. Colorear las tecnologías en las tarjetas de experiencia */
+.card__text strong {
+  color: #14b8a6;   /* Tu color Teal (o usa var(--accent)) */
+  font-weight: 600;
+}
+
+/* 2. Estilo para el nombre de la empresa (opcional, para separarlo del cargo) */
+.company-name {
+  margin: -5px 0 8px; /* Ajusta el espacio entre Título y Empresa */
+  font-weight: 500;
+  font-size: 1.1rem;
+  color: var(--text); /* O un gris un poco más claro */
+}
+
+/* 3. Definición de la Grilla de 2 columnas (si no la tienes creada) */
+.grid--2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas iguales */
+  gap: 20px;
+}
+
+/* Ajuste Mobile: Que se vuelvan 1 sola columna en pantallas pequeñas */
+@media (max-width: 760px) {
+  .grid--2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.btn svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* ------------------------------
+   Links page (solo /links)
+------------------------------ */
+.links-page .links-card {
+  padding: 26px;
+}
+
+.links-page .links-hero {
+  display: flex;
+  gap: 22px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.links-page .links-avatar {
+  width: 120px;
+  aspect-ratio: 1 / 1;
+}
+
+.links-page .links-heroText {
+  flex: 1;
+  min-width: 220px;
+}
+
+.links-page .links-name {
+  margin: 8px 0 6px;
+  line-height: 1;
+  letter-spacing: -0.5px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.links-page .links-nameMain {
+  color: var(--text);
+}
+
+.links-page .links-nameAccent {
+  color: var(--accent);
+}
+
+.links-page .links-role {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.links-page .links-divider {
+  margin: 18px 0;
+}
+
+.links-page .links-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* más separación entre links */
+}
+
+/* “Un poquito” más gordos, sin exagerar (ideal para móvil) */
+.links-page .links-btn {
+  padding: 14px 18px; /* antes más compacto */
+  border-radius: 16px;
+}
+
+/* Iconos alineados y con color correcto */
+.links-page .links-icon svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Directorio más pegado al nombre + más fuerte */
+.links-page .links-kicker {
+  font-weight: 800;
+  margin-bottom: 1px; /* antes quedaba muy separado y “flotando” */
+}
+
+/* Grupo de acciones */
+.links-page .links-navGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Ajustes visuales pequeños para header */
+.links-page .links-navBtn {
+  padding: 10px 14px;
+  border-radius: 14px;
+}
+
+.links-page .links-navIcon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+}
+
+/* Mobile: compactar sin ocultar */
+@media (max-width: 760px) {
+  .links-page .nav__inner {
+    gap: 10px;
+  }
+
+  .links-page .links-navGroup {
+    gap: 8px;
+  }
+
+  /* El botón portafolio un poco más compacto */
+  .links-page .links-navBtn {
+    padding: 9px 12px;
+  }
+
+  /* Iconos un poquito más compactos */
+  .links-page .links-navIcon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+#about .card{
+  width: 100%;
+  max-width: 100%;
+  margin-inline: 0; /* same behavior as other cards */
+}
+
+#about .card p{
+  max-width: var(--measure, 72ch);
+  margin: 0 auto var(--para-gap, 14px);
+  line-height: var(--lh-prose, 1.75);
+
+  /* ✅ Nunca cortar palabras */
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+
+  /* ✅ NO justify */
+  text-align: left;
+}
+
+#about .card p:last-child{ margin-bottom: 0; }
+
+@supports (text-wrap: pretty){
+  #about .card p{ text-wrap: pretty; }
+}
+
+@media (max-width: 760px){
+  #about .card p{ text-align: left; }
+}
+
+
+/* A11Y: solo visible para lectores de pantalla */
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+
+
+/* Efecto Hover: Rellena el botón suavemente */
+.linkedin-btn:hover {
+  background: rgba(20, 184, 166, 0.15); /* Más brillante al pasar el mouse */
+  border-color: #14b8a6;                 /* Borde sólido */
+  transform: translateY(-2px);           /* Pequeño "salto" hacia arriba */
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.2); /* Resplandor */
+  color: #fff; /* Opcional: si quieres que el texto se vuelva blanco al pasar el mouse */
+}
+
+/* Ajuste para el icono */
+.btn-icon {
+  fill: currentColor; /* Toma el color del texto automáticamente */
+}
+
+/* --- BADGE (Etiqueta Destacado) --- */
+.badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+/* Variante TEAL (Tu marca) */
+.badge--teal {
+  background: rgba(20, 184, 166, 0.1); /* Fondo transparente suave */
+  color: #14b8a6;                       /* Texto Teal brillante */
+  border: 1px solid rgba(20, 184, 166, 0.3);
+}
+
+/* --- TECH CHIPS (Iconos de tecnologías) --- */
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.tech-chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface);       /* Fondo de la tarjeta */
+  border: 1px solid var(--border);  /* Borde sutil */
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  transition: all 0.2s ease;
+}
+
+.tech-chip:hover {
+  border-color: #14b8a6;            /* Borde Teal al pasar el mouse */
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.tech-chip img {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+/* --- BOTÓN GITHUB (Estilo consistente con LinkedIn) --- */
+
+
+.github-btn:hover {
+  border-color: #14b8a6;            /* Borde Teal */
+  background: rgba(20, 184, 166, 0.05);
+  color: #14b8a6;                   /* Texto Teal */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.card--featured {
+    border: 1px solid rgba(20, 184, 166, 0.3); /* Un borde sutil para destacar la tarjeta principal */
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;                  /* Espacio entre icono y texto */
+  
+  /* Estilo Visual: Teal "Ghost" */
+  border: 1px solid rgba(20, 184, 166, 0.5); 
+  background: rgba(20, 184, 166, 0.05);      
+  color: #14b8a6;             
+  
+  /* Dimensiones */
+  padding: 16px 32px;
+  min-width: 240px;           /* Ancho mínimo para consistencia */
+  border-radius: var(--radius); /* Usa el mismo radio que tus tarjetas */
+  
+  /* Tipografía */
+  font-family: var(--font);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  text-decoration: none;
+  
+  /* Transición suave */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* Efecto Hover (Al pasar el mouse) */
+.btn-action:hover {
+  background: rgba(20, 184, 166, 0.15); /* Fondo un poco más visible */
+  border-color: #14b8a6;                 /* Borde sólido */
+  transform: translateY(-3px);           /* Se eleva ligeramente */
+  box-shadow: 0 5px 15px rgba(20, 184, 166, 0.25); /* Resplandor Teal */
+  color: #14b8a6;
+}
+
+/* Animación extra para el icono */
+.btn-action svg {
+  fill: currentColor;
+  transition: transform 0.3s ease;
+}
+
+.btn-action:hover svg {
+  transform: scale(1.1); /* El icono crece un 10% al hacer hover */
+}
+
+/* Títulos de las categorías dentro de la tarjeta */
+.skill-category-title {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Divisor sutil entre categorías */
+.skill-divider {
+  height: 1px;
+  background: var(--border);
+  margin: 24px 0;
+  width: 100%;
+}
+
+/* Ajuste del Grid para que se vea ordenado */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+/* Estilo base del Skill (revisando que lo tengas) */
+.skill {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--surface); /* O un tono un poco más claro/oscuro según tu tema */
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.skill img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* --- DESTACADO: REACT NATIVE --- */
+.skill--featured {
+  background: rgba(20, 184, 166, 0.1); /* Fondo Teal muy suave */
+  border: 1px solid #14b8a6;            /* Borde Teal sólido */
+  color: #14b8a6;                       /* Texto Teal */
+  font-weight: 700;
+}
+
+.skill--featured:hover {
+  box-shadow: 0 0 15px rgba(20, 184, 166, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Estilo específico para el botón de LinkedIn */
+.linkedin-btn {
+  display: inline-flex;       /* Para alinear icono y texto */
+  align-items: center;
+  justify-content: center;
+  gap: 10px;                  /* Espacio entre icono y texto */
+  
+  border: 1px solid rgba(20, 184, 166, 0.5); /* Borde sutil Teal */
+  background: rgba(20, 184, 166, 0.05);      /* Fondo muy levemente tintado */
+  color: #14b8a6;             /* Texto Teal */
+  
+  padding: 16px 32px;         /* Tamaño cómodo para el dedo/mouse */
+  width: auto;                /* Que no ocupe todo el ancho (opcional, se ve más elegante) */
+  min-width: 250px;
+  
+  transition: all 0.3s ease;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+/* Efecto Hover: Rellena el botón suavemente */
+.linkedin-btn:hover {
+  background: rgba(20, 184, 166, 0.15); /* Más brillante al pasar el mouse */
+  border-color: #14b8a6;                 /* Borde sólido */
+  transform: translateY(-2px);           /* Pequeño "salto" hacia arriba */
+  box-shadow: 0 4px 12px rgba(20, 184, 166, 0.2); /* Resplandor */
+  color: #fff; /* Opcional: si quieres que el texto se vuelva blanco al pasar el mouse */
+}
+
+/* Ajuste para el icono */
+.btn-icon {
+  fill: currentColor; /* Toma el color del texto automáticamente */
+}
+
+.education-card {
+  padding: 32px;
+}
+
+.education-item {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.education-icon {
+  color: #14b8a6; /* Tu Teal característico */
+  background: rgba(20, 184, 166, 0.1);
+  padding: 12px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.education-info h3 {
+  margin-bottom: 4px;
+  font-size: 1.25rem;
+}
+
+.institution {
+  font-weight: 500;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+
+.education-card .muted {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #14b8a6; 
+}
+
+/* Ajuste móvil */
+@media (max-width: 600px) {
+  .education-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.lang-card {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform var(--transition);
+}
+
+.lang-card:hover {
+  transform: translateY(-4px);
+}
+
+.lang-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-icon {
+  background: rgba(20, 184, 166, 0.1); /* Tu Teal translúcido */
+  color: #14b8a6; /* Teal sólido */
+  font-weight: 800;
+  font-size: 0.8rem;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(20, 184, 166, 0.2);
+}
+
+.lang-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.lang-level-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lang-level {
+  font-size: 0.95rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* Barra de progreso sutil */
+.lang-progress {
+  height: 6px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  width: 100%;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #14b8a6; /* Tu color acento Teal */
+  border-radius: 10px;
+}
+
+/* --- LAYOUT CONTACTO --- */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr; /* Columna izquierda un poco más angosta */
+  gap: 40px;
+  align-items: flex-start;
+}
+
+/* Columna Izquierda (Texto) */
+.contact-info h3 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+  line-height: 1.3;
+}
+
+.contact-info .muted {
+  font-size: 1rem;
+  margin-bottom: 32px;
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.detail-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+}
+
+.detail-item:hover {
+  transform: translateX(5px);
+  color: #14b8a6;
+}
+
+.detail-icon {
+  background: rgba(20, 184, 166, 0.1);
+  color: #14b8a6;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- FORMULARIO MODERNIZADO --- */
+.contact-card {
+  padding: 32px; 
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.field-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+
+.form-input {
+  width: 100%;
+  padding: 14px 16px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #14b8a6; 
+  background: rgba(20, 184, 166, 0.05); 
+  box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.1);
+}
+
+.form-input::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+/* --- BOTÓN SUBMIT SÓLIDO --- */
+.btn-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  
+  background: #14b8a6; 
+  color: #fff; 
+  
+  border: none;
+  padding: 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.btn-submit:hover {
+  background: #0d9488; 
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(20, 184, 166, 0.3);
+}
+
+/* --- FOOTER  --- */
+
+.footer {
+  background: #080808; 
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 80px 0 40px;
+  margin-top: 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--background), #14b8a6, var(--background));
+  opacity: 0.4;
+}
+
+
+.footer-bold-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr; 
+  gap: 40px;
+  margin-bottom: 60px;
+  align-items: flex-start; 
+}
+
+
+.footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;  
+  gap: 20px;
+  
+  
+  padding-right: 40px;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+  height: 100%; 
+  justify-content: center;
+}
+
+.footer-logo-img-bold {
+  height: 80px; 
+  width: auto;
+  object-fit: contain;
+  mix-blend-mode: screen;
+  opacity: 1;
+  transition: transform 0.3s ease;
+}
+
+.footer-logo-link-bold:hover .footer-logo-img-bold {
+  transform: scale(1.05);
+}
+
+.footer-tagline {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  opacity: 0.9;
+}
+
+.footer-nav-col, 
+.footer-social-col {
+  padding-left: 20px;
+}
+
+
+.footer-heading {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  margin-bottom: 24px;
+  color: var(--muted);
+  position: relative;
+  display: inline-block;
+}
+
+
+.footer-heading::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 30px;
+  height: 2px;
+  background: #14b8a6;
+}
+
+
+.footer-nav-bold {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.footer-nav-bold a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-nav-bold a:hover {
+  color: #14b8a6;
+  transform: translateX(5px); 
+}
+
+
+.footer-socials-bold {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.social-link-bold {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  padding: 12px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+}
+
+.social-link-bold:hover {
+  color: #14b8a6;
+  background: rgba(20, 184, 166, 0.08);
+  border-color: rgba(20, 184, 166, 0.3);
+  transform: translateX(5px);
+}
+
+
+.footer-bottom-bold {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 30px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-bottom-bold .muted {
+  font-size: 0.9rem;
+  opacity: 0.6;
+}
+
+
+@media (max-width: 900px) {
+  .footer-bold-grid {
+    grid-template-columns: 1fr; 
+    gap: 50px;
+    text-align: center;
+  }
+
+  .footer-brand-col {
+    border-right: none; 
+    padding-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    padding-bottom: 40px;
+  }
+
+  .footer-nav-col, 
+  .footer-social-col {
+    padding-left: 0;
+    align-items: center; 
+  }
+
+  
+  .footer-heading::after {
+    left: 50%;
+    transform: translateX(-50%); 
+  }
+
+  
+  .footer-nav-bold a:hover,
+  .social-link-bold:hover {
+    transform: none; 
+  }
+}
+
+:root[data-theme="light"] {
+  /* 1. FONDO: Un gris muy sutil, no blanco puro. */
+  --background: #f3f4f6;  /* Cool Gray 100 - Da descanso a la vista */
+  
+  /* 2. TARJETAS: Blanco puro para que resalten sobre el fondo gris */
+  --surface: #ffffff;
+  
+  /* 3. BORDES: Un gris suave para separar secciones */
+  --border: #e5e7eb;      /* Gray 200 */
+  
+  /* 4. TEXTO: Gris oscuro profundo (más elegante que el negro #000) */
+  --text: #111827;        /* Gray 900 - Títulos */
+  --muted: #4b5563;       /* Gray 600 - Párrafos */
+  
+  /* 5. ACENTO: Mantenemos tu Teal, pero aseguramos contraste */
+  --accent: #0d9488;      /* Un Teal un pelín más oscuro para leerse bien en blanco */
+  
+  /* 6. LA CLAVE: Una sombra suave para las tarjetas en modo claro */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+/* APLICAR SOMBRAS SOLO EN MODO CLARO */
+[data-theme="light"] .card {
+  box-shadow: var(--card-shadow);
+  border: 1px solid transparent; /* En modo claro, la sombra define el borde */
+}
+
+/* Ajuste especial para el Header/Nav en modo claro */
+[data-theme="light"] .nav {
+  background: rgba(255, 255, 255, 0.8); /* Efecto cristal limpio */
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+[data-theme="light"] .hero {
+  /* Patrón de puntos sutil */
+  background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* =========================================
+   CONFIGURACIÓN DEL TEMA CLARO (Light Mode)
+   ========================================= */
+
+:root[data-theme="light"] {
+  /* 1. Paleta de Colores Claros */
+  --background: #f8fafc;       /* Gris muy suave (casi blanco) para el fondo */
+  --surface: #ffffff;          /* Blanco puro para las tarjetas */
+  --border: #e2e8f0;           /* Gris claro para bordes */
+  
+  /* 2. Texto */
+  --text: #0f172a;             /* Azul oscuro casi negro (más elegante que negro puro) */
+  --muted: #475569;            /* Gris medio para textos secundarios */
+  
+  /* 3. Acento (Teal un poco más oscuro para mejor lectura sobre blanco) */
+  --accent: #0d9488;           
+  
+  /* 4. Sombra para tarjetas (Clave para diseño moderno en light mode) */
+  --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* =========================================
+   AJUSTES DE ELEMENTOS EN MODO CLARO
+   ========================================= */
+
+/* 1. Tarjetas: Agregar sombra y borde sutil */
+[data-theme="light"] .card {
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--border);
+  background: var(--surface);
+}
+
+/* 2. Botones de Acción (LinkedIn / GitHub) en Blanco */
+[data-theme="light"] .linkedin-btn,
+[data-theme="light"] .btn-action {
+  background: rgba(13, 148, 136, 0.08); /* Fondo Teal muy pálido */
+  border-color: var(--accent);          /* Borde Teal sólido */
+  color: var(--accent);                 /* Texto Teal */
+  font-weight: 700;
+}
+
+[data-theme="light"] .linkedin-btn:hover,
+[data-theme="light"] .btn-action:hover {
+  background: var(--accent);            /* Al pasar el mouse se llena de color */
+  color: #ffffff;                       /* Texto blanco */
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(13, 148, 136, 0.3);
+}
+
+/* 3. Chips de Tecnologías (Esos ovalos con iconos) */
+[data-theme="light"] .tech-chip {
+  background: #f1f5f9;       /* Gris claro en lugar de transparente */
+  border-color: #cbd5e1;     /* Borde más visible */
+  color: var(--text);
+}
+
+[data-theme="light"] .tech-chip:hover {
+  border-color: var(--accent);
+  background: rgba(13, 148, 136, 0.1);
+  color: var(--accent);
+}
+
+/* 4. Badge "Destacado" */
+[data-theme="light"] .badge--teal {
+  background: rgba(13, 148, 136, 0.15); /* Un poco más fuerte para que se note */
+  color: #0f766e;                        /* Teal oscuro para leerse bien */
+  border: 1px solid rgba(13, 148, 136, 0.3);
+}
+
+/* 5. Ajuste del Footer en modo claro */
+[data-theme="light"] .footer {
+  background: #1e293b; /* Mantener footer oscuro o usar gris muy oscuro para contraste */
+  color: #f8fafc;      /* Texto claro en footer */
+}
+/* Forzamos que los textos del footer sean claros aunque el tema sea light */
+[data-theme="light"] .footer .footer-heading,
+[data-theme="light"] .footer .footer-nav-bold a,
+[data-theme="light"] .footer .footer-tagline {
+    color: #e2e8f0; 
+}
+[data-theme="light"] .footer .muted {
+    color: #94a3b8;
+}
+
+/* --- CORRECCIÓN DE LOGO EN MODO CLARO --- */
+[data-theme="light"] .brand-icon {
+  /* 1. Invierte colores (Negro->Blanco, Blanco->Negro) */
+  /* 2. Rota el tono 180 grados para intentar recuperar el color Teal de la 'B' */
+  filter: invert(1) hue-rotate(180deg);
+  
+  /* 3. Asegura que el nuevo fondo "blanco" del logo sea transparente */
+  mix-blend-mode: multiply;
+  
+  /* Opcional: Aumenta un poco el contraste si se ve lavado */
+  opacity: 0.9; 
+}
+
+/* =========================================
+   ARREGLOS ESPECÍFICOS PARA EL HEADER (LIGHT MODE)
+   ========================================= */
+
+/* 1. ARREGLAR EL LOGO (Quitar el cuadro gris) */
+[data-theme="light"] .brand-icon {
+  /* Invierte el color: El fondo negro se vuelve blanco */
+  filter: invert(1) hue-rotate(180deg);
+  /* Hace que el blanco se vuelva transparente */
+  mix-blend-mode: multiply; 
+  /* Asegura contraste */
+  opacity: 1; 
+}
+
+/* 2. ARREGLAR LOS BOTONES (ES / TEMA) */
+/* En modo claro, quitamos el fondo blanco pesado y la sombra */
+[data-theme="light"] .nav .icon-btn {
+  background: transparent;      /* Fondo transparente */
+  border: 1px solid #cbd5e1;    /* Borde gris sutil */
+  color: #334155;               /* Icono gris oscuro */
+  box-shadow: none;             /* Sin sombra */
+}
+
+/* Efecto Hover elegante */
+[data-theme="light"] .nav .icon-btn:hover {
+  background: rgba(13, 148, 136, 0.1); /* Fondo Teal suave */
+  border-color: #0d9488;                /* Borde Teal */
+  color: #0d9488;                       /* Icono Teal */
+  transform: translateY(-1px);
+}
+
+/* 3. ARREGLAR EL TEXTO DEL LOGO (JOSE BARREIRO) */
+[data-theme="light"] .brand-text {
+  color: #0f172a; /* Texto oscuro para que se lea sobre blanco */
+}

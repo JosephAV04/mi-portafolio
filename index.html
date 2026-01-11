@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Jose Barreiro | Ingeniero de Software</title>
+  <meta name="description" content="Portafolio de Agner Diaz. Ingeniero de Software (INTEC) y desarrollador Flutter con experiencia en proyectos reales, arquitectura limpia, bases de datos y soluciones escalables.">
+  <meta name="keywords" content="Agner Diaz, Flutter Developer, Software Engineer, INTEC, Desarrollo Móvil, República Dominicana, Backend, SQL">
+
+  <meta property="og:title" content="Agner Diaz | Flutter Developer">
+  <meta property="og:description" content="Ingeniero de Software y desarrollador Flutter. Ver proyectos y experiencia.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="/assets/img/og.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com/">
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+  <link href="./assets/css2" rel="stylesheet">
+  <link rel="icon" type="image/png" href="./assets/milogo.png">
+
+  <link rel="stylesheet" href="./assets/css/styles.css">
+
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        if (saved === "dark" || saved === "light") {
+          document.documentElement.setAttribute("data-theme", saved);
+          return;
+        }
+        var hasMatch = typeof window.matchMedia === "function";
+        if (hasMatch && window.matchMedia("(prefers-color-scheme: light)").matches) {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      } catch (e) {
+        document.documentElement.setAttribute("data-theme", "dark");
+      }
+    })();
+  </script>
+</head>
+
+<body>
+  <a class="skip-link" href="#main" data-i18n="a11y.skip">Saltar al contenido</a>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      
+      <a href="/" class="brand-container" aria-label="Inicio">
+        <img src="./assets/milogo.png" alt="Logo JB" class="brand-icon">
+
+        <span class="brand-text">
+        JOSE <span class="text-highlight">BARREIRO</span>
+        </span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="nav__menu" id="navMenu" aria-label="Navegación principal">
+        <a href="#about" data-i18n="nav.about">Sobre mí</a>
+        <a href="#experience" data-i18n="nav.experience">Experiencia</a>
+        <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+        <a href="#skills" data-i18n="nav.skills">Tecnologías</a>
+        <a href="#certs" data-i18n="nav.certs">Certificaciones</a>
+        <a href="#education" data-i18n="nav.education">Educación</a>
+        
+        <a class="btn btn--ghost" href="#contact" data-i18n="nav.contact">Contacto</a>
+
+        <button class="icon-btn" id="langToggle" type="button" aria-label="Cambiar idioma">ES</button>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Cambiar a modo claro">☾</button>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__left">
+          
+          <h1 class="title">
+            JOSE <span class="title__accent">BARREIRO</span>
+          </h1>
+
+          <p class="subtitle" data-typing-key="hero.roles">
+            <span class="typing" aria-hidden="true"></span>
+            <span class="typing__cursor" aria-hidden="true" style="opacity: 1;"></span>
+            <span class="sr-only">Rol profesional</span>
+          </p>
+
+          <p class="lead" data-i18n="hero.lead">Ingeniero de Software especializado en <strong>Front-End</strong> (Angular, React Native) 
+            con sólida competencia en <strong>Back-End</strong> (Node.js, API RESTful). 
+            Experto en la <strong>modernización de interfaces</strong> y la <strong>automatización de procesos</strong> 
+            empresariales mediante soluciones multiplataforma (Web, Mobile y Escritorio) 
+            bajo estándares avanzados de <strong>UX/UI</strong>.
+          </p>
+
+          <div class="social">
+            <a class="social__icon" href="https://www.linkedin.com/in/josebarreirotejeda" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0.5 8.2H4.5V24H0.5V8.2zM8.2 8.2H12V10.3H12.1C12.6 9.4 13.9 8.4 16 8.4C20.1 8.4 24 10.6 24 16.1V24H20V16.7C20 14.2 19.1 12.6 16.9 12.6C15.2 12.6 14.2 13.8 13.8 14.9C13.7 15.3 13.7 15.9 13.7 16.5V24H9.7V8.2H8.2z"></path>
+              </svg>
+            </a>
+            <a class="social__icon" href="https://github.com/JosephAV04" target="_blank" rel="noreferrer" aria-label="GitHub">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.833.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.27.098-2.646 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.376.202 2.394.1 2.647.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.523 2 12 2z"></path>
+              </svg>
+            </a>
+
+            <a class="social__btn" id="contactCta" href="#contact" data-i18n="hero.contactBtn">Contáctame</a>
+
+          </div>
+        </div>
+
+        <div class="hero__right">
+          <div class="avatar">
+            <img src="./assets/Yo.png" alt="Jose Barreiro">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="about.title">Sobre mí</h2>
+        </div>
+        
+        <div class="card">
+          
+          <div class="about-highlights">
+            <div class="highlight-item">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="highlight-icon">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+              <span>Ingeniero de Software (INTEC) <span class="divider">•</span> <span class="highlight-date">Enero 2026</span></span>
+            </div>
+          </div>
+          <div class="about-text-content" data-i18n="about.text">
+            <p>Me apasiona construir productos digitales que sean herramientas claras y sólidas. Mi metodología parte de entender a fondo la <strong>lógica del negocio</strong> para diseñar soluciones eficientes: transformo requerimientos abstractos en funcionalidades escalables, priorizando siempre la calidad y una experiencia de usuario moderna.</p>  
+            <p>A nivel técnico, desarrollo interfaces multiplataforma con <strong>React</strong>, <strong>React Native</strong> y <strong>Angular</strong>. En el backend, construyo servicios robustos con <strong>C#</strong> y <strong>Node.js</strong>, diseñando <strong>APIs RESTful</strong> seguras. Mi flujo se apoya en buenas prácticas, Git y una mentalidad orientada a la integración continua (CI/CD).</p>      
+            <p>En lo humano, soy pragmático y orientado a resultados: disfruto trabajar en equipo, aportar estructura y asegurar que cada línea de código tenga un propósito. Esa combinación de capacidad analítica y enfoque en el producto final es lo que define mi perfil profesional.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="experience">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="experience.title">Experiencia</h2>
+        </div>
+        
+        <div class="grid grid--2">
+          
+          <article class="card">
+            <h3 data-i18n="experience.innova.title">Desarrollador Front-End</h3>
+            <p class="company-name">Innova Centro</p> <p class="muted" data-i18n="experience.innova.date">Julio 2023 — Noviembre 2025</p>
+            
+            <p class="card__text" data-i18n="experience.innova.desc">
+              Bajo metodología <strong>Scrum</strong>, fui parte del desarrollo y mantenimiento de interfaces móviles en <strong>React Native</strong>, enfocándome en una experiencia de usuario (<strong>UX/UI</strong>) moderna. Realicé la integración técnica con <strong>Node.js</strong> para sincronizar el Front-End con el <strong>ERP</strong> y el Back-End de la empresa. Además, gestioné el ciclo de vida del desarrollo utilizando <strong>GitHub</strong>, realicé pruebas de API en <strong>Postman</strong> y coordiné incidencias en <strong>Jira</strong>, materializando prototipos de <strong>Figma</strong> en código funcional.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3 data-i18n="experience.jbarreiro.title">Analista Programador</h3>
+            <p class="company-name">JBARREIRO & CO</p>
+            <p class="muted" data-i18n="experience.jbarreiro.date">Abril 2020 — Mayo 2023</p>
+            
+            <p class="card__text" data-i18n="experience.jbarreiro.desc">
+              Desarrollé un sistema integral de facturación basado en <strong>React</strong>, optimizando el control de operaciones comerciales. Implementé soluciones de inteligencia de negocios utilizando <strong>Power BI</strong> para generar informes detallados de ventas e inventario. Asimismo, fui responsable de la actualización y mantenimiento de endpoints críticos en <strong>Azure API</strong>, asegurando la disponibilidad y escalabilidad de los servicios.
+            </p>
+          </article>
+
+        </div>
+        
+        <div style="margin-top:24px; text-align:center;">
+          <a class="card card--link linkedin-btn" href="https://www.linkedin.com/in/josebarreirotejeda" target="_blank" rel="noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="btn-icon">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+            <span data-i18n="experience.more">Ver perfil completo en LinkedIn</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="projects">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="projects.title">Proyectos</h2>
+        </div>
+
+        <div class="grid grid--2">
+          
+          <article class="card card--featured">
+            <div class="badge badge--teal" data-i18n="projects.erp.badge">Enterprise ERP</div>
+            
+            <h3 data-i18n="projects.erp.title">Sistema de Gestión JBARREIRO</h3>
+            
+            <p data-i18n="projects.erp.desc1">
+              Solución de escritorio robusta desarrollada en <strong>WPF (.NET C#)</strong> bajo el patrón de arquitectura <strong>MVVM</strong>. Centraliza la operación del negocio gestionando facturación, inventario en tiempo real, cobros y nómina.
+            </p>
+            <p style="margin-top: 10px;" data-i18n="projects.erp.desc2">
+              Infraestructura alojada en <strong>Azure</strong> con <strong>SQL Server</strong>. Integra módulos de inteligencia de negocios con <strong>Power BI</strong> para visualización estratégica de KPIs.
+            </p>
+            
+            <div class="project-tech" role="list">
+                <div class="tech-chip"><img src="./assets/csharp-original.svg" alt=""><span>C#</span></div>
+                <div class="tech-chip"><img src="./assets/dot-net-original.svg" alt=""><span>.NET/WPF</span></div>
+                <div class="tech-chip"><img src="./assets/sql-server-original.svg" alt=""><span>SQL Server</span></div>
+                <div class="tech-chip"><img src="./assets/azure-original.svg" alt=""><span>Azure</span></div>
+                <div class="tech-chip"><img src="./assets/powerbi-original.svg" alt=""><span>Power BI</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="badge badge--teal" data-i18n="projects.nasa.badge">Mobile API Integration</div>
+            
+            <h3 data-i18n="projects.nasa.title">Daily Nasa</h3>
+            
+            <p data-i18n="projects.nasa.desc1">
+              Aplicación móvil desarrollada en <strong>React Native</strong> enfocada en el consumo de datos externos. La app se conecta exitosamente a la <strong>API pública de la NASA</strong> (APOD) para obtener y procesar contenido dinámico.
+            </p>
+            <p style="margin-top: 10px;" data-i18n="projects.nasa.desc2">
+              Implementa un manejo eficiente de peticiones HTTP y renderizado de imágenes para visualizar una galería interactiva con las últimas "Fotos de la Semana", asegurando una experiencia de usuario fluida en iOS y Android.
+            </p>
+            
+            <div class="project-tech" role="list">
+                <div class="tech-chip"><img src="./assets/react-original.svg" alt=""> <span>React Native</span></div>
+                <div class="tech-chip is-text-only"><img src="./assets/RESTful-original.svg" alt=""> <span>RESTful API</span></div>
+                <div class="tech-chip"><img src="./assets/javascript-original.svg" alt=""> <span>JavaScript</span></div>
+            </div>
+          </article>
+
+        </div>
+
+        <div style="margin-top:32px; text-align:center;">
+          <a class="card card--link linkedin-btn" href="https://github.com/JosephAV04" target="_blank" rel="noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+            <span data-i18n="projects.more">Ver más en GitHub</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="skills">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="skills.title">Tecnologías</h2>
+        </div>
+
+        <div class="card">
+          
+          <h3 class="skill-category-title">Front-End & Mobile</h3>
+          <div class="skills-grid">
+            <div class="skill skill--featured">
+              <img src="./assets/react-original.svg" alt="React Native">
+              <span>React Native</span>
+            </div>
+            
+            <div class="skill"><img src="./assets/react-original.svg" alt="React"><span>React</span></div>
+            <div class="skill"><img src="./assets/javascript-original.svg" alt="JavaScript"><span>JavaScript</span></div>
+            <div class="skill"><img src="./assets/typescript-original.svg" alt="TypeScript"><span>TypeScript</span></div> <div class="skill"><img src="./assets/angular-original.svg" alt="Angular"><span>Angular</span></div>
+            <div class="skill"><img src="./assets/tailwindcss-original.svg" alt="Tailwind"><span>Tailwind CSS</span></div>
+          </div>
+
+          <div class="skill-divider"></div>
+
+          <h3 class="skill-category-title">Back-End & Desktop</h3>
+          <div class="skills-grid">
+            <div class="skill"><img src="./assets/csharp-original.svg" alt="C#"><span>C#</span></div>
+            <div class="skill"><img src="./assets/dot-net-original.svg" alt=".NET"><span>.NET Framework</span></div>
+            <div class="skill"><img src="./assets/nodejs-original.svg" alt="Node.js"><span>Node.js</span></div>
+            <div class="skill"><img src="./assets/python-original.svg" alt="Python"><span>Python</span></div>
+            <div class="skill"><img src="./assets/sql-server-original.svg" alt="SQL Server"><span>SQL Server</span></div>
+            <div class="skill"><img src="./assets/postgresql-original.svg" alt="PostgreSQL"><span>PostgreSQL</span></div>
+          </div>
+
+          <div class="skill-divider"></div>
+
+          <h3 class="skill-category-title">Herramientas & Ecosistema</h3>
+          <div class="skills-grid">
+            <div class="skill"><img src="./assets/azure-original.svg" alt="Azure"><span>Azure</span></div>
+            <div class="skill"><img src="./assets/docker-original.svg" alt="Docker"><span>Docker</span></div>
+            <div class="skill"><img src="./assets/git-original.svg" alt="Git"><span>Git</span></div>
+            <div class="skill"><img src="./assets/github-original.svg" alt="GitHub"><span>GitHub</span></div>
+            <div class="skill"><img src="./assets/jira-original.svg" alt="Jira"><span>Jira</span></div>
+            <div class="skill"><img src="./assets/figma-original.svg" alt="Figma"><span>Figma</span></div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="certs">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="certs.title">Certificaciones</h2>
+        </div>
+
+        <div class="grid grid--3">
+          <article class="card cert">
+            <img class="cert__img" src="./assets/UserInterfaces.png" alt="SAS">
+            <div class="cert__body"><h3 data-i18n="certs.sas">User Interfaces</h3></div>
+          </article>
+          <article class="card cert">
+            <img class="cert__img" src="./assets/Proto-Desing.png" alt="Fortinet">
+            <div class="cert__body"><h3 data-i18n="certs.fortinet">Proto-Desing</h3></div>
+          </article>
+          <article class="card cert">
+            <img class="cert__img" src="./assets/huawei.png" alt="Huawei">
+            <div class="cert__body"><h3 data-i18n="certs.huawei">Cloud Basics: Development and Basic Concepts</h3></div>
+          </article>
+        </div>
+
+        <div style="margin-top:16px;">
+          <a class="card card--link linkedin-btn" href="https://drive.google.com/drive/folders/1Cg4E2YFO2U7tv7Vlf9vihhQYJtrQW0-n" target="_blank" rel="noreferrer" data-i18n="certs.more">
+            Ver todas las certificaciones
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="education">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="education.title">Educación</h2>
+        </div>
+
+        <div class="card education-card">
+          <div class="education-item">
+            <div class="education-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="education-info">
+              <h3 data-i18n="education.intec.title">Ingeniería en Software</h3>
+              <p class="institution">Instituto Tecnológico de Santo Domingo (INTEC)</p>
+              <p class="muted" data-i18n="education.intec.date">2023 — Presente (Estudiante de Término)</p>
+            </div>
+          </div>
+
+          <div class="skill-divider"></div> <div class="education-item">
+            <div class="education-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            </div>
+            <div class="education-info">
+              <h3 data-i18n="education.itsc.title">Técnico Superior en Desarrollo de Software</h3>
+              <p class="institution">Instituto Tecnológico Superior Comunitario (ITSC)</p>
+              <p class="muted" data-i18n="education.itsc.date">2020 — 2022 (Culminado)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="languages">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="languages.title">Idiomas</h2>
+        </div>
+        <div class="grid grid--2">
+          <div class="card lang-card">
+            <div class="lang-header">
+              <div class="lang-icon">ES</div>
+              <div class="lang-name" data-i18n="languages.es.name">Español</div>
+            </div>
+            <div class="lang-level-container">
+              <span class="lang-level" data-i18n="languages.es.level">Nativo</span>
+              <div class="lang-progress"><div class="progress-bar" style="width: 100%"></div></div>
+            </div>
+          </div>
+
+          <div class="card lang-card">
+            <div class="lang-header">
+              <div class="lang-icon">EN</div>
+              <div class="lang-name" data-i18n="languages.en.name">Inglés</div>
+            </div>
+            <div class="lang-level-container">
+              <span class="lang-level" data-i18n="languages.en.level">Intermedio — B2</span>
+              <div class="lang-progress"><div class="progress-bar" style="width: 65%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container">
+        <div class="section__head">
+          <h2 data-i18n="contact.title">Contacto</h2>
+        </div>
+
+        <div class="contact-wrapper">
+          
+          <div class="contact-info">
+            <h3 data-i18n="contact.how">Hablemos de tu próximo proyecto</h3>
+            
+            <p class="muted" data-i18n="contact.desc">
+              Estoy disponible para nuevas oportunidades laborales y colaboraciones. Si buscas un perfil que combine lógica de negocio con interfaces modernas, escríbeme.
+            </p>
+            
+            <div class="contact-details">
+              <a href="mailto:jbarreiro.jose@gmail.com" class="detail-item">
+                <div class="detail-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <span>jbarreiro.jose@gmail.com</span>
+              </a>
+
+              <div class="detail-item">
+                <div class="detail-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <span>Santo Domingo, República Dominicana</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card contact-card">
+            <form action="#" action="https://formspree.io/f/mbddrvor" class="form" id="contactForm" method="POST">
+              
+              <div class="form-group">
+                <label class="field-label" for="contactSubject" data-i18n="contact.form.subjectLabel">Asunto</label>
+                <input class="form-input" id="contactSubject" name="subject" type="text" data-i18n-placeholder="contact.form.subjectPh" placeholder="Ej: Oportunidad Full Stack" required>
+              </div>
+
+              <div class="form-group">
+                <label class="field-label" for="contactEmail" data-i18n="contact.form.emailLabel">Correo Electrónico</label>
+                <input class="form-input" id="contactEmail" name="email" type="email" data-i18n-placeholder="contact.form.emailPh" placeholder="nombre@empresa.com" required>
+              </div>
+
+              <div class="form-group">
+                <label class="field-label" for="contactMessage" data-i18n="contact.form.messageLabel" >Mensaje</label>
+                <textarea class="form-input" id="contactMessage" name="message" rows="5" data-i18n-placeholder="contact.form.messagePh" placeholder="Hola Jose, me gustaría conversar sobre..." required></textarea>
+              </div>
+
+              <button class="btn-submit" type="submit">
+                <span>Enviar Mensaje</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              </button>
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-bold-grid">
+          
+          <div class="footer-brand-col">
+            <a href="#" class="footer-logo-link-bold" aria-label="Volver arriba">
+              <img src="./assets/milogo.png" alt="Logo Jose Barreiro" class="footer-logo-img-bold">
+            </a>
+            <p class="footer-tagline">Jose Barreiro</p>
+          </div>
+
+          <div class="footer-nav-col">
+            <h4 class="footer-heading" data-i18n="footer.navTitle">Navegación</h4>
+            <nav class="footer-nav-bold">
+              <a href="#about" data-i18n="nav.about">Sobre mí</a>
+              <a href="#experience" data-i18n="nav.experience">Experiencia</a>
+              <a href="#projects" data-i18n="nav.projects">Proyectos</a>
+              <a href="#contact" data-i18n="nav.contact">Contacto</a>
+            </nav>
+          </div>
+
+          <div class="footer-social-col">
+            <h4 class="footer-heading" data-i18n="footer.connectTitle">Conectar</h4>
+            <div class="footer-socials-bold">
+              <a href="https://github.com/JosephAV04" target="_blank" aria-label="GitHub" class="social-link-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/josebarreirotejeda" target="_blank" aria-label="LinkedIn" class="social-link-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="footer-bottom-bold">
+          <p class="muted">
+            <span data-i18n="footer.copyright">© 2026 Jose Barreiro. Portafolio hecho desde 0%.</span>
+          </p>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  
+  
+  <script src="./assets/js/i18n.js"></script>
+  <script src="./assets/js/main.js"></script>
+  <script>
+    const yearSpan = document.getElementById('year');
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear();
+    }
+    const themeBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+    const moonIcon = '☾'; 
+    const sunIcon = '☀';
+    
+    const updateButton = (theme) => {
+        themeBtn.textContent = theme === 'dark' ? moonIcon : sunIcon;
+        themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro');
+    };
+    
+    if (themeBtn) {
+        updateButton(htmlEl.getAttribute('data-theme'));
+        themeBtn.addEventListener('click', () => {
+            const currentTheme = htmlEl.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            htmlEl.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateButton(newTheme);
+        });
+    }
+  </script>   
+</body>
+</html>
