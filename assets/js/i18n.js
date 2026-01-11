@@ -145,7 +145,8 @@ const translations = {
       }
     },
     skills: {
-      title: "Skills"
+      title: "Skills",
+      tools: "Tools & Ecosystem"
     },
     certs: {
       title: "Certifications",
