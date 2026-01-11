@@ -2070,3 +2070,27 @@ p[data-i18n$=".desc"],
     font-weight: 600;
   }
 }
+
+@media (max-width: 768px) {
+  /* ... tus otros códigos móviles ... */
+
+  /* 1. Centrar todo el contenido del Hero */
+  .hero__left {
+    text-align: center;      /* Centra los textos */
+    align-items: center;     /* Centra los elementos Flex (como los botones) */
+    padding: 0 16px;         /* Un poco de margen lateral para que no toque los bordes */
+  }
+
+  /* 2. Ajustar el tamaño del texto "Typing" para que no se corte */
+  .subtitle {
+    font-size: 1.1rem;      /* Reducir un poco el tamaño en móvil */
+    justify-content: center; /* Asegura que el cursor y texto estén al centro */
+    margin-bottom: 24px;
+  }
+  
+  /* 3. Asegurar que los botones sociales no se separen raro */
+  .social {
+    justify-content: center;
+    flex-wrap: wrap; /* Por si en pantallas muy pequeñas no caben */
+  }
+}
