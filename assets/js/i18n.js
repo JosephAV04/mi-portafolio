@@ -77,17 +77,10 @@ const translations = {
     },
     contact: {
       title: "Contacto",
-      how: "Hablemos de tu próximo proyecto",
-      desc: "Estoy disponible para nuevas oportunidades laborales y colaboraciones. Si buscas un perfil que combine lógica de negocio con interfaces modernas, escríbeme.",    
-      form: {
-        subjectLabel: "Asunto",
-        subjectPh: "Ej: Oportunidad Full Stack",
-        emailLabel: "Correo Electrónico",
-        emailPh: "nombre@empresa.com",
-        messageLabel: "Mensaje",
-        messagePh: "Hola Jose, me gustaría conversar sobre...",
-        send: "Enviar Mensaje"
-      }
+      ctaTitle: "¿Listo para iniciar?",
+      ctaDesc: "Actualmente estoy aceptando nuevos proyectos y oportunidades laborales. Si tienes una idea en mente o necesitas escalar tu equipo de desarrollo, conecta conmigo.",
+      emailBtn: "Enviar Correo",
+      linkedinBtn: "LinkedIn"
     },
     footer: {
         navTitle: "Navegación",
@@ -174,17 +167,10 @@ const translations = {
     },
     contact: {
       title: "Contact",
-      how: "Let's talk about your next project",
-      desc: "I am available for new job opportunities and collaborations. If you are looking for a profile that combines business logic with modern interfaces, write to me.",
-      form: {
-        subjectLabel: "Subject",
-        subjectPh: "Ex: Full Stack Opportunity",
-        emailLabel: "Email Address",
-        emailPh: "name@company.com",
-        messageLabel: "Message",
-        messagePh: "Hi Jose, I'd like to discuss...",
-        send: "Send Message"
-      }
+      ctaTitle: "Ready to start?",
+      ctaDesc: "I am currently accepting new projects and job opportunities. If you have an idea in mind or need to scale your development team, let's connect.",
+      emailBtn: "Send Email",
+      linkedinBtn: "LinkedIn"
     },
     footer: {
         navTitle: "Navigation",

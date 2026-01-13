@@ -2088,3 +2088,82 @@ p[data-i18n$=".desc"],
     flex-wrap: wrap; /* Por si en pantallas muy pequeñas no caben */
   }
 }
+
+/* --- NUEVA SECCIÓN CONTACTO MINIMALISTA --- */
+.contact-minimal {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto; /* Centrado horizontal */
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.contact-text h3 {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: var(--text-heading);
+}
+
+.contact-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 500px;
+  margin: 0 auto; /* Centrar el párrafo */
+}
+
+.contact-actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap; /* Permite que bajen si no caben */
+  justify-content: center;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 600px) {
+  .contact-minimal {
+    padding: 24px;
+  }
+  
+  .contact-text h3 {
+    font-size: 1.5rem;
+  }
+  
+  /* Botones uno debajo del otro en celular */
+  .contact-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .contact-actions .btn {
+    width: 100%; /* Botones de ancho completo */
+    justify-content: center;
+  }
+}
+
+/* Mejora del botón de LinkedIn */
+.contact-actions .btn--ghost {
+    border: 1px solid var(--accent); /* Añade un borde del color acento */
+    color: var(--accent); /* Cambia el color del texto e icono al acento */
+    transition: all 0.3s ease; /* Transición suave para el hover */
+}
+
+/* Efecto Hover para el botón de LinkedIn mejorado */
+.contact-actions .btn--ghost:hover {
+    background-color: var(--accent); /* Fondo acento al pasar el mouse */
+    color: var(--background); /* Texto oscuro al pasar el mouse */
+}
+
+/* Asegurar que los iconos estén bien centrados */
+.contact-actions .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Espacio entre icono y texto */
+    padding: 12px 24px; /* Ajusta el padding según necesites */
+}
+
+/* Para cambiar el icono del botón de correo, necesitarías reemplazar el SVG en tu HTML por uno de un sobre */
+/* Por ejemplo, usando un SVG de Heroicons o similar */
