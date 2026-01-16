@@ -2165,5 +2165,106 @@ p[data-i18n$=".desc"],
     padding: 12px 24px; /* Ajusta el padding según necesites */
 }
 
-/* Para cambiar el icono del botón de correo, necesitarías reemplazar el SVG en tu HTML por uno de un sobre */
-/* Por ejemplo, usando un SVG de Heroicons o similar */
+/* =========================================
+   ESTILOS BASE (MÓDO OSCURO POR DEFECTO)
+   ========================================= */
+
+/* --- Contenedor Padre --- */
+.education-item {
+  display: flex;
+  align-items: center; /* Centrado vertical */
+  padding: 1rem 0;
+}
+
+/* --- Contenedor del SVG --- */
+.progress-container {
+  width: 97px;
+  height: 97px;
+  margin-right: 1.5rem;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.circular-chart {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* --- Estilos del Círculo (Fondo/Track) --- */
+/* En modo oscuro, el track debe ser gris oscuro */
+.circle-bg {
+  fill: none;
+  stroke: #334155; /* Slate 700 (Oscuro) */
+  stroke-width: 2.6;
+}
+
+/* --- La Barra de Progreso --- */
+.circle {
+  fill: none;
+  stroke-width: 2.8;
+  stroke-linecap: round;
+  animation: progress 1.2s ease-out forwards;
+}
+
+@keyframes progress {
+  0% { stroke-dasharray: 0 100; }
+}
+
+/* --- Texto del Porcentaje --- */
+/* En modo oscuro, el texto debe ser BLANCO/CLARO */
+.percentage {
+  fill: #f1f5f9; /* Slate 100 (Blanco hueso) */
+  font-family: sans-serif;
+  font-weight: 800;
+  font-size: 0.48em;
+  text-anchor: middle;
+  margin: 1.2;
+  
+}
+
+/* --- Icono de Check --- */
+.check-icon path {
+  stroke: #34d399; /* Emerald 400 (Verde brillante para fondo oscuro) */
+  stroke-width: 3;
+}
+
+/* --- Colores de las Barras (Brillantes para fondo oscuro) --- */
+.circular-chart.primary-color .circle {
+  stroke: #2dd4bf; /* Teal 400 (Más brillante) */
+}
+
+.circular-chart.success-color .circle {
+  stroke: #34d399; /* Emerald 400 (Más brillante) */
+}
+
+
+/* =========================================
+   OVERRIDES PARA MODO CLARO
+   ([data-theme="light"])
+   ========================================= */
+
+/* El fondo del track se vuelve gris claro */
+[data-theme="light"] .circle-bg {
+  stroke: #e2e8f0; /* Slate 200 */
+}
+
+/* El texto se vuelve oscuro */
+[data-theme="light"] .percentage {
+  fill: #1e293b; /* Slate 800 (Casi negro) */
+}
+
+/* Los colores de las barras se vuelven un poco más oscuros/sólidos */
+[data-theme="light"] .circular-chart.primary-color .circle {
+  stroke: #14b8a6; /* Teal 500 */
+}
+
+[data-theme="light"] .circular-chart.success-color .circle {
+  stroke: #10b981; /* Emerald 500 */
+}
+
+[data-theme="light"] .check-icon path {
+  stroke: #10b981; /* Verde estándar */
+}
